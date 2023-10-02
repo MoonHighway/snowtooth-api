@@ -1,9 +1,9 @@
-scalar DateTime
+scalar Date
 
 type Event {
   id: ID!
   title: String!
-  date: DateTime!
+  date: Date!
 }
 
 type Hotel {

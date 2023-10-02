@@ -85,11 +85,17 @@ const resolvers = {
         lifts.find((l) => id === l.id)
       )
   },
-  DateTime: new GraphQLScalarType({
+  Date: new GraphQLScalarType({
     name: "DateTime",
     description: "A valid date time value.",
     parseValue: (value) => new Date(value),
-    serialize: (value) => new Date(value).toISOString(),
+    serialize: (value) =>
+      new Date(value).toLocaleDateString("en-us", {
+        weekday: "long",
+        year: "numeric",
+        month: "short",
+        day: "numeric"
+      }),
     parseLiteral: (ast) => new Date(ast.value)
   }),
   Subscription: {
