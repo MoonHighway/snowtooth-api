@@ -14,6 +14,7 @@ import { PubSub } from "graphql-subscriptions";
 
 import lifts from "./data/lifts.json" assert { type: "json" };
 import trails from "./data/trails.json" assert { type: "json" };
+import hotels from "./data/hotels.json" assert { type: "json" };
 
 import "dotenv/config";
 
@@ -24,6 +25,7 @@ const typeDefs = fs.readFileSync(
 const pubsub = new PubSub();
 const resolvers = {
   Query: {
+    allHotels: () => hotels,
     allLifts: (parent, { status }) =>
       !status
         ? lifts
