@@ -1,5 +1,11 @@
 scalar DateTime
 
+type Event {
+  id: ID!
+  title: String!
+  date: DateTime!
+}
+
 type Hotel {
   id: ID!
   name: String!
@@ -50,6 +56,7 @@ type Query {
   findTrailByName(name: String!): Trail!
   trailCount(status: TrailStatus!): Int!
   allHotels: [Hotel!]!
+  allEvents: [Event!]!
 }
 
 type Mutation {

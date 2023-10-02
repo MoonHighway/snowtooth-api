@@ -1,0 +1,27 @@
+[
+  {
+    "id": "01",
+    "title": "Opening Day",
+    "date": "11/2/2023"
+  },
+  {
+    "id": "02",
+    "title": "Avalanche 1 Course",
+    "date": "11/12/2023"
+  },
+  {
+    "id": "03",
+    "title": "Turkey Day",
+    "date": "11/23/2023"
+  },
+  {
+    "id": "04",
+    "title": "Santa Skydiving",
+    "date": "12/15/2023"
+  },
+  {
+    "id": "05",
+    "title": "NYE Fireworks",
+    "date": "12/31/2023"
+  }
+]

@@ -15,6 +15,7 @@ import { PubSub } from "graphql-subscriptions";
 import lifts from "./data/lifts.json" assert { type: "json" };
 import trails from "./data/trails.json" assert { type: "json" };
 import hotels from "./data/hotels.json" assert { type: "json" };
+import events from "./data/events.json" assert { type: "json" };
 
 import "dotenv/config";
 
@@ -25,6 +26,7 @@ const typeDefs = fs.readFileSync(
 const pubsub = new PubSub();
 const resolvers = {
   Query: {
+    allEvents: () => events,
     allHotels: () => hotels,
     allLifts: (parent, { status }) =>
       !status
@@ -117,15 +119,11 @@ const wsServer = new WebSocketServer({
 
 const serverCleanup = useServer({ schema }, wsServer);
 
-// Set up ApolloServer.
 const server = new ApolloServer({
   schema,
   context: { pubsub },
   plugins: [
-    // Proper shutdown for the HTTP server.
     ApolloServerPluginDrainHttpServer({ httpServer }),
-
-    // Proper shutdown for the WebSocket server.
     {
       async serverWillStart() {
         return {
@@ -146,7 +144,7 @@ app.use(
   expressMiddleware(server)
 );
 
-const PORT = process.env.PORT || 4000;
+const PORT = 3000;
 // Now that our HTTP server is fully set up, we can listen to it.
 httpServer.listen(PORT, () => {
   console.log(

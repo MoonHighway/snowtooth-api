@@ -31,5 +31,8 @@
     "graphql-ws": "^5.14.1",
     "nodemon": "^3.0.1",
     "ws": "^8.14.2"
+  },
+  "devDependencies": {
+    "@flydotio/dockerfile": "^0.4.10"
   }
 }
